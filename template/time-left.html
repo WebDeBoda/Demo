@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="hero" style="background-image: url('/galeria/cuenta_atras.jpg');">
     <div class="hero-content rounded-3 bg-white bg-opacity-75 p-5 text-center">
         <!-- <h1 class="display-4">Boda de Bea y Pablo</h1> -->
         <div class="js-countdown row">
@@ -24,7 +24,7 @@
         <!-- End Col -->
         </div>
         <!-- End Row -->
-        <p class="lead mt-3">13 de septiembre de 2025</p>
+        <p class="lead mt-3" id="FechaBoda"></p>
     </div>
 </div>
 
@@ -32,7 +32,11 @@
     (function() {
       // INITIALIZATION OF COUNTDOWN
       // =======================================================
-      const oneYearFromNow = new Date()
+      const fechaReferencia = new Date().getTime() + (115 * 24 * 60 * 60 * 1000) + (13 * 60 * 60 * 1000) + (7 * 60 * 1000)+ (23 * 1000);
+
+      const fechaBoda = new Date(fechaReferencia);
+      const opcionesFecha = { day: 'numeric', month: 'long', year: 'numeric' };
+      document.getElementById('FechaBoda').textContent = fechaBoda.toLocaleDateString('es-ES', opcionesFecha);
 
       document.querySelectorAll('.js-countdown').forEach(item => {
         const days = item.querySelector('.js-cd-days'),
@@ -40,7 +44,7 @@
           minutes = item.querySelector('.js-cd-minutes'),
           seconds = item.querySelector('.js-cd-seconds')
 
-        countdown(new Date(2025, 8, 13, 13, 0),
+        countdown(fechaReferencia,
           ts => {
             days.innerHTML = ts.days
             hours.innerHTML = ts.hours
