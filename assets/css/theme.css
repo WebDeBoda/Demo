@@ -18953,6 +18953,9 @@ input[type="number"] {
 .list-timeline-item {
   max-width: 32rem;
 }
+.list-timeline-item-m {
+  max-width: 30rem;
+}
 .modal-header {
   align-items: center;
   padding-bottom: 0;
